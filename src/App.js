@@ -1,39 +1,24 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header';
-import CatBlock from './components/CatBlock';
+import Home from './pages/Home';
+import Favorites from './pages/Favorites';
+import NotFound from './pages/NotFound';
 
 import './sass/app.scss';
 
 function App() {
-  const [items, setItems] = React.useState([]);
-
-  
-  React.useEffect(() => {
-    fetch(`https://api.thecatapi.com/v1/images/search?limit=15`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => {
-      setItems(json);
-    })
-    .catch((err) => {
-      console.warn(err);
-      alert('Error fatch API');
-    });
-	}, []);
-  
-  console.log(items);
-
 	return (
 		<>
+			<h1 style={{ display: 'none' }}>Котики</h1>
 			<Header />
 			<div className="container">
-				<main className='main'>
-          {items.map((obj) => (
-            <CatBlock key={obj.id} id={obj.id} url={obj.url}/>
-          ))}
-				</main>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/favorites" element={<Favorites />} />
+					<Route path="*" element={<NotFound />} />
+				</Routes>
 			</div>
 		</>
 	);
