@@ -1,9 +1,12 @@
 import Categories from './Categories';
 
-const Header = () => {
+const Header = ({ categoriesIndex, onClickCategory }) => {
 	return (
 		<header className="header">
-			<Categories />
+			<Categories
+				categoriesIndex={categoriesIndex}
+				onClickCategory={onClickCategory}
+			/>
 		</header>
 	);
 };

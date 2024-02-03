@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Categories = () => {
-	const [categoriesIndex, setCategoriesIndex] = React.useState(0);
+const Categories = ({categoriesIndex, onClickCategory}) => {
 
 	const categoriesMenu = [
 		{ name: <Link to="/">Все котики</Link> },
 		{ name: <Link to="/favorites">Любимые котики</Link> },
 	];
-
-	function onClickCategory(i) {
-		setCategoriesIndex(i);
-	}
 
 	return (
 		<div className="categories">
