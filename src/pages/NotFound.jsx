@@ -4,7 +4,7 @@ const NotFound = () => {
 	return (
 		<div className='error'>
 			<h2>
-				<span>😕</span> <br />
+				<span>😿</span> <br />
 				Ничего не найденно
 			</h2>
 			<p className='desc'>

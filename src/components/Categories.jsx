@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Categories = ({categoriesIndex, onClickCategory}) => {
+import AppContext from '../context';
+
+const Categories = () => {
+	const { categoriesIndex, onClickCategory } = React.useContext(AppContext);
 
 	const categoriesMenu = [
 		{ name: <Link to="/">Все котики</Link> },

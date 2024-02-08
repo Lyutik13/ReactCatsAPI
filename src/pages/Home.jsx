@@ -1,9 +1,12 @@
 import React from 'react';
 
+import AppContext from '../context';
 import CatBlock from '../components/CatBlock/CatBlock';
 import SkeletonBlock from '../components/CatBlock/SkeletonBlock';
 
-const Home = ({onAddFavorites}) => {
+const Home = () => {
+	const { onAddFavorites } = React.useContext(AppContext);
+
 	const [items, setItems] = React.useState([]);
 	const [isLoading, setIsLoading] = React.useState(true);
 
@@ -12,7 +15,7 @@ const Home = ({onAddFavorites}) => {
 	React.useEffect(() => {
 		async function loadingItems() {
 			setIsLoading(true);
-			await fetch(`https://api.thecatapi.com/v1/images/search?limit=2&${myKey}`)
+			await fetch(`https://api.thecatapi.com/v1/images/search?limit=3&${myKey}`)
 				.then((res) => {
 					return res.json();
 				})
