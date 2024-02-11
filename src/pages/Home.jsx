@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import AppContext from '../context';
 import CatBlock from '../components/CatBlock/CatBlock';
@@ -12,21 +13,36 @@ const Home = () => {
 
 	const myKey = 'api_key=live_TGFRuaOSsQuKCS3qADEB8cC8RN4iHjy5icDZLAaQG5dtxVqyD6nDQhhXDKhHGdd1';
 
+	// const loadingItems = async () => {
+	// 	setIsLoading(true);
+
+	// 	await fetch(`https://api.thecatapi.com/v1/images/search?limit=15&${myKey}`)
+	// 		.then((res) => {
+	// 			return res.json();
+	// 		})
+	// 		.then((json) => {
+	// 			setItems((prev) => [...prev, ...json]);
+	// 			setIsLoading(false);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.warn(err);
+	// 			alert('Error fatch API');
+	// 		});
+	// };
+
 	const loadingItems = async () => {
 		setIsLoading(true);
 
-		await fetch(`https://api.thecatapi.com/v1/images/search?limit=15&${myKey}`)
-			.then((res) => {
-				return res.json();
-			})
-			.then((json) => {
-				setItems((prev) => [...prev, ...json]);
-				setIsLoading(false);
-			})
-			.catch((err) => {
-				console.warn(err);
-				alert('Error fatch API');
-			});
+		try {
+			const { data } = await axios.get(
+				`https://api.thecatapi.com/v1/images/search?limit=15&${myKey}`,
+			);
+			setItems((prev) => [...prev, ...data]);
+			setIsLoading(false);
+		} catch (error) {
+			console.warn(error);
+			alert('Ошибка при получении данных от API');
+		}
 	};
 
 	React.useEffect(() => {
