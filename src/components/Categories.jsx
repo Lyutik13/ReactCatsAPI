@@ -7,8 +7,8 @@ const Categories = () => {
 	const { categoriesIndex, onClickCategory } = React.useContext(AppContext);
 
 	const categoriesMenu = [
-		{ name: <Link to="/">Все котики</Link> },
-		{ name: <Link to="/favorites">Любимые котики</Link> },
+		{ name: <Link className='headerBtn' to="/">Все котики</Link> },
+		{ name: <Link className='headerBtn' to="/favorites">Любимые котики</Link> },
 	];
 
 	return (
