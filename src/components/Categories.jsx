@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { setCategoriesHeaderIndex } from '../redux/cats/slice';
 import { Link } from 'react-router-dom';
 
-import AppContext from '../context';
-
 const Categories = () => {
-	const { categoriesIndex, onClickCategory } = React.useContext(AppContext);
+  const categoriesHeaderIndex = useSelector((state) => state.cats.categoriesHeaderIndex);
+  const dispatch = useDispatch();
+  
 
 	const categoriesMenu = [
 		{ name: <Link className='headerBtn' to="/">Все котики</Link> },
@@ -16,9 +18,9 @@ const Categories = () => {
 			<ul>
 				{categoriesMenu.map((obj, i) => (
 					<li
-						className={categoriesIndex === i ? 'active' : ''}
+						className={categoriesHeaderIndex === i ? 'active' : ''}
 						key={i}
-						onClick={() => onClickCategory(i)}>
+						onClick={() => dispatch(setCategoriesHeaderIndex(i))}>
 						{obj.name}
 					</li>
 				))}

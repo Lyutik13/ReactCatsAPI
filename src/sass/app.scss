@@ -2,7 +2,11 @@
 @import 'libs/reset';
 
 .container {
-	margin: 0 60px;
+	margin: 0 15px;
+}
+
+h3 {
+  font-size: clamp(1.25rem, calc(1.13rem + 0.62vw), 1.88rem);
 }
 
 .header {
@@ -35,15 +39,26 @@
 }
 
 .headerBtn {
-	text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 	height: 64px;
-	padding: 25px;
+	margin: 0 25px;
 }
 
-@media (max-width: 400px) {
-	.headerBtn {
-		padding: 10px;
-	}
+@media (max-width: 430px) {
+  .categories {
+    ul {
+      margin: 0 10px;
+      li {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .headerBtn {
+    margin: 0 10px;
+  }
 }
 .active {
 	color: var(--White-High-Emphasis, #fff) !important;
@@ -64,6 +79,7 @@
 .catBlock {
 	position: relative;
 	transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px 2px rgba(30, 136, 229, 0.24);
 	.catBlockImg {
 		img {
 			z-index: 1;
@@ -78,7 +94,7 @@
 	}
 	&:hover {
 		transform: scale(1.1);
-		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 4px 4px 0px rgba(30, 136, 229, 0.24);
 		.favoriteSvg {
 			display: block;
 		}
@@ -103,11 +119,7 @@
 }
 
 .desc {
-	font-size: 24px;
-	span {
-		font-size: 80px;
-		color: #2196f3;
-	}
+	font-size: clamp(1.13rem, calc(1.06rem + 0.37vw), 1.5rem);
 }
 
 .btnLoading {

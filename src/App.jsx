@@ -40,11 +40,9 @@ function App() {
 		setCategoriesIndex(i);
 	}
 
-	console.log(catLikePage);
-
 	return (
 		<AppContext.Provider value={{ catLikePage, categoriesIndex, onAddFavorites, onClickCategory }}>
-			<h1 style={{ display: 'none' }}>Котики</h1>
+			<h1 style={{ display: 'none' }}>Котики API</h1>
 			<Header />
 			<div className="container">
 				<Routes>

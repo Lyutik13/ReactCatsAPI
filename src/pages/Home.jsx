@@ -35,7 +35,7 @@ const Home = () => {
 
 		try {
 			const { data } = await axios.get(
-				`https://api.thecatapi.com/v1/images/search?limit=15&${myKey}`,
+				`https://api.thecatapi.com/v1/images/search?limit=1&${myKey}`,
 			);
 			setItems((prev) => [...prev, ...data]);
 			setIsLoading(false);

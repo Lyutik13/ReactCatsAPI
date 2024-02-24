@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import AppContext from '../context';
 import CatBlock from '../components/CatBlock/CatBlock';
+import { setCategoriesHeaderIndex } from '../redux/cats/slice';
 
 const Favorites = () => {
-	const { catLikePage, onAddFavorites, onClickCategory } = React.useContext(AppContext);
+	const { catLikePage, onAddFavorites } = React.useContext(AppContext);
+	const dispatch = useDispatch();
 
 	return (
 		<>
@@ -21,11 +24,14 @@ const Favorites = () => {
 					))
 				) : (
 					<div className="error">
-						<h2>
+						<h3>
 							<span>😿</span> <br />К сожалению вы не добавили ни одного котика
-						</h2>
+						</h3>
 						<p className="desc">Так добавьте его скорее)))</p>
-						<Link to="/" onClick={() => onClickCategory(0)} className="btnOnHome">
+						<Link
+							to="/"
+							onClick={() => dispatch(setCategoriesHeaderIndex(0))}
+							className="btnOnHome">
 							На главную
 						</Link>
 					</div>
