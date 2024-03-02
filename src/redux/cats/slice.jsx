@@ -4,7 +4,7 @@ const initialState = {
 	categoriesHeaderIndex: 0,
 };
 
-export const catsSlice = createSlice({
+const catsSlice = createSlice({
 	name: 'cats',
 	initialState,
 	reducers: {

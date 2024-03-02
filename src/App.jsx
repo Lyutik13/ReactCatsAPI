@@ -13,7 +13,9 @@ function App() {
 	const [catLikePage, setCatLikePage] = React.useState(
 		JSON.parse(localStorage.getItem('catLike')) || [],
 	);
-	const [categoriesIndex, setCategoriesIndex] = React.useState(0);
+
+  // const [items, setItems] = React.useState([]);
+	const [isLoading, setIsLoading] = React.useState(true);
 
 	const saveLocalStorage = () => {
 		localStorage.setItem('catLike', JSON.stringify(catLikePage));
@@ -36,12 +38,8 @@ function App() {
 		}
 	};
 
-	function onClickCategory(i) {
-		setCategoriesIndex(i);
-	}
-
 	return (
-		<AppContext.Provider value={{ catLikePage, categoriesIndex, onAddFavorites, onClickCategory }}>
+		<AppContext.Provider value={{ catLikePage, onAddFavorites, isLoading, setIsLoading}}>
 			<h1 style={{ display: 'none' }}>Котики API</h1>
 			<Header />
 			<div className="container">

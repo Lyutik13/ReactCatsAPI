@@ -1,15 +1,16 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import AppContext from '../context';
 import CatBlock from '../components/CatBlock/CatBlock';
 import SkeletonBlock from '../components/CatBlock/SkeletonBlock';
+import { setItems } from '../redux/items/itemSlice';
 
 const Home = () => {
-	const { onAddFavorites } = React.useContext(AppContext);
-
-	const [items, setItems] = React.useState([]);
-	const [isLoading, setIsLoading] = React.useState(true);
+	const { onAddFavorites, isLoading, setIsLoading } = React.useContext(AppContext);
+	const items = useSelector((state) => state.items.items);
+	const dispatch = useDispatch();
 
 	const myKey = 'api_key=live_TGFRuaOSsQuKCS3qADEB8cC8RN4iHjy5icDZLAaQG5dtxVqyD6nDQhhXDKhHGdd1';
 
@@ -37,7 +38,7 @@ const Home = () => {
 			const { data } = await axios.get(
 				`https://api.thecatapi.com/v1/images/search?limit=1&${myKey}`,
 			);
-			setItems((prev) => [...prev, ...data]);
+			dispatch(setItems(data));
 			setIsLoading(false);
 		} catch (error) {
 			console.warn(error);
@@ -46,18 +47,23 @@ const Home = () => {
 	};
 
 	React.useEffect(() => {
-		loadingItems();
+		if (items.length <= 0) {
+			loadingItems();
+		}
+		// eslint-disable-next-line
 	}, []);
 
 	return (
 		<>
 			<div className="main">
 				{items.length === 0
-					? [...new Array(15)].map((_, index) => <SkeletonBlock key={index} />)
+					? [...new Array(1)].map((_, index) => <SkeletonBlock key={index} />)
 					: items.map((item) => (
 							<CatBlock key={item.id} {...item} onAddFavorites={() => onAddFavorites(item)} />
 					  ))}
-				{isLoading && [...new Array(15)].map((_, index) => <SkeletonBlock key={index} />)}
+				{isLoading &&
+					items.length > 0 &&
+					[...new Array(1)].map((_, index) => <SkeletonBlock key={index} />)}
 			</div>
 			<button onClick={loadingItems} className="btnLoading">
 				... Загружаем еще котиков ...
