@@ -14,9 +14,6 @@ function App() {
 		JSON.parse(localStorage.getItem('catLike')) || [],
 	);
 
-  // const [items, setItems] = React.useState([]);
-	const [isLoading, setIsLoading] = React.useState(true);
-
 	const saveLocalStorage = () => {
 		localStorage.setItem('catLike', JSON.stringify(catLikePage));
 	};
@@ -39,7 +36,7 @@ function App() {
 	};
 
 	return (
-		<AppContext.Provider value={{ catLikePage, onAddFavorites, isLoading, setIsLoading}}>
+		<AppContext.Provider value={{ catLikePage, onAddFavorites}}>
 			<h1 style={{ display: 'none' }}>Котики API</h1>
 			<Header />
 			<div className="container">
