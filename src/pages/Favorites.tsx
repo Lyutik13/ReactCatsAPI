@@ -6,7 +6,7 @@ import AppContext from '../context';
 import CatBlock from '../components/CatBlock/CatBlock';
 import { setCategoriesHeaderIndex } from '../redux/cats/slice';
 
-const Favorites = () => {
+const Favorites: React.FC = () => {
 	const { catLikePage, onAddFavorites } = React.useContext(AppContext);
 	const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const Favorites = () => {
 						<CatBlock
 							key={item.id}
 							{...item}
-							onAddFavorites={() => onAddFavorites(item)}
+							onAddFavorites={async () => onAddFavorites(item)}
 							isFavorites={false}
 						/>
 					))

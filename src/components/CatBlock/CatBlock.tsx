@@ -3,7 +3,16 @@ import React from 'react';
 import favorite from '../../assets/img/heart-solid.svg';
 import favoriteBorder from '../../assets/img/heart-regular.svg';
 
-const CatBlock = ({ isFavorites = true, onAddFavorites, url, id }) => {
+
+interface ICatBlockProps {
+  id: number;
+  url: string;
+  onAddFavorites: () => void;
+  isFavorites?: boolean;
+}
+
+
+const CatBlock: React.FC<ICatBlockProps> = ({ isFavorites = true, onAddFavorites, url, id }) => {
 	const [isLike, setIsLike] = React.useState(isFavorites);
 
 	const onClickLike = () => {
@@ -15,7 +24,7 @@ const CatBlock = ({ isFavorites = true, onAddFavorites, url, id }) => {
 		<>
 			<div className="catBlock">
 				<div className="catBlockImg">
-					<img src={url} alt={id} />
+					<img src={url} alt={id.toString()} />
 				</div>
 				<img
 					className="favoriteSvg"

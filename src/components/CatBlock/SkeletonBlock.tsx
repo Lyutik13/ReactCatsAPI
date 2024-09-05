@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const SkeletonBlock = (props) => (
+const SkeletonBlock: React.FC = (props) => (
 	<ContentLoader
 		className="catBlock"
 		speed={10}

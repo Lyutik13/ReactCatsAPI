@@ -1,6 +1,9 @@
+import React from 'react';
+
 import Categories from './Categories';
 
-const Header = () => {
+
+const Header: React.FC = () => {
 	return (
 		<header className="header">
 			<Categories />

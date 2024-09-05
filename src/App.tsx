@@ -6,13 +6,15 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import NotFound from './pages/NotFound';
+import { IItems } from './redux/items/itemSlice';
 
 import './sass/app.scss';
 
 function App() {
-	const [catLikePage, setCatLikePage] = React.useState(
-		JSON.parse(localStorage.getItem('catLike')) || [],
-	);
+  const catLikePageData = localStorage.getItem('catLike');
+  const initialCatLikePage = catLikePageData ? JSON.parse(catLikePageData) : [];
+  
+  const [catLikePage, setCatLikePage] = React.useState<IItems[]>(initialCatLikePage);
 
 	const saveLocalStorage = () => {
 		localStorage.setItem('catLike', JSON.stringify(catLikePage));
@@ -20,7 +22,7 @@ function App() {
 
 	saveLocalStorage();
 
-	const onAddFavorites = (item) => {
+	const onAddFavorites = (item: IItems) => {
 		try {
 			if (catLikePage.find((favObj) => favObj.id === item.id)) {
 				setCatLikePage((prev) => prev.filter((favObj) => favObj.id !== item.id));
