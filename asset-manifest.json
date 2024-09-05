@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ReactCatsAPI/static/css/main.02ca3b02.css",
-    "main.js": "/ReactCatsAPI/static/js/main.20dd4eda.js",
+    "main.css": "/ReactCatsAPI/static/css/main.e75f6830.css",
+    "main.js": "/ReactCatsAPI/static/js/main.55beaab8.js",
     "static/media/heart-regular.svg": "/ReactCatsAPI/static/media/heart-regular.d7bc6469261c7cc9485a039207fa1d55.svg",
     "index.html": "/ReactCatsAPI/index.html",
     "static/media/heart-solid.svg": "/ReactCatsAPI/static/media/heart-solid.3d5a6b0215acc3eca4727c78519c72a4.svg",
-    "main.02ca3b02.css.map": "/ReactCatsAPI/static/css/main.02ca3b02.css.map",
-    "main.20dd4eda.js.map": "/ReactCatsAPI/static/js/main.20dd4eda.js.map"
+    "main.e75f6830.css.map": "/ReactCatsAPI/static/css/main.e75f6830.css.map",
+    "main.55beaab8.js.map": "/ReactCatsAPI/static/js/main.55beaab8.js.map"
   },
   "entrypoints": [
-    "static/css/main.02ca3b02.css",
-    "static/js/main.20dd4eda.js"
+    "static/css/main.e75f6830.css",
+    "static/js/main.55beaab8.js"
   ]
 }
